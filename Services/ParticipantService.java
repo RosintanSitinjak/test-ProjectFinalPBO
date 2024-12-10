@@ -38,4 +38,8 @@ public class ParticipantService {
     public Optional<Participant> cariPesertaBerdasarkanNama(String nama) {
         return participantRepository.findPesertaByName(nama);
     }
+
+    public List<Participant> lihatPesertaEvent(Event event) {
+        return participantRepository.getPesertaByEvent(event);
+    }
 }

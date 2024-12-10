@@ -41,4 +41,5 @@ public class EventService {
     public List<Participant> lihatPesertaEvent(Event event) {
         return participantRepository.getPesertaByEvent(event);
     }
+}
 
