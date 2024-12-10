@@ -22,7 +22,7 @@ public class MainView {
     public void utama() {
         while (true) {
             pilihanMenu();
-            System.out.print("Masukkan pilihan Anda ): ");
+            System.out.print("Masukkan pilihan Anda : ");
             int pilihan = scanner.nextInt();
             scanner.nextLine(); // Consume newline
 
@@ -37,24 +37,27 @@ public class MainView {
                     editEvent();
                     break;
                 case 4:
-                    hapusEvent();
+                    cariEventBerdasarkanNama();
                     break;
                 case 5:
-                    tambahPeserta();
+                    hapusEvent();
                     break;
                 case 6:
-                    lihatPesertaEvent();
+                    tambahPeserta();
                     break;
                 case 7:
-                    lihatTotalPeserta();
+                    lihatPesertaEvent();
                     break;
                 case 8:
-                    lihatDetailPeserta();
+                    lihatTotalPeserta();
                     break;
                 case 9:
-                    hapusPeserta();
+                    lihatDetailPeserta();
                     break;
                 case 10:
+                    hapusPeserta();
+                    break;
+                case 11:
                     System.out.println("Keluar...");
                     return;
                 default:
@@ -68,13 +71,14 @@ public class MainView {
         System.out.println("1. Tambah Event");
         System.out.println("2. Lihat Semua Event");
         System.out.println("3. Edit Event");
-        System.out.println("4. Hapus Event");
-        System.out.println("5. Tambah Peserta");
-        System.out.println("6. Lihat Peserta Event");
-        System.out.println("7. Lihat Total Peserta");
-        System.out.println("8. Lihat Detail Peserta");
-        System.out.println("9. Hapus Peserta");
-        System.out.println("10. Keluar");
+        System.out.println("4. Cari Event Berdasarkan Nama");
+        System.out.println("5. Hapus Event");
+        System.out.println("6. Tambah Peserta");
+        System.out.println("7. Lihat Peserta Event");
+        System.out.println("8. Lihat Total Peserta");
+        System.out.println("9. Lihat Detail Peserta");
+        System.out.println("10. Hapus Peserta");
+        System.out.println("11. Keluar");
     }
 
     private void tambahEvent() {
@@ -191,6 +195,21 @@ public class MainView {
             System.out.println("Event Peserta: " + detailPeserta.getEvent().getNameEvent());
         } else {
             System.out.println("Peserta dengan NIM tersebut tidak ditemukan.");
+        }
+    }
+
+    private void cariEventBerdasarkanNama() {
+        System.out.print("Masukkan nama event yang ingin dicari: ");
+        String namaEvent = scanner.nextLine();
+        Optional<Event> event = eventService.cariEventBerdasarkanNama(namaEvent);
+
+        if (event.isPresent()) {
+            Event e = event.get();
+            System.out.println("Nama Event: " + e.getNameEvent());
+            System.out.println("Tanggal Event: " + e.getDateEvent());
+            System.out.println("Lokasi Event: " + e.getEventLocation());
+        } else {
+            System.out.println("Event dengan nama tersebut tidak ditemukan.");
         }
     }
 }
