@@ -22,7 +22,7 @@ public class MainView {
     public void utama() {
         while (true) {
             pilihanMenu();
-            System.out.print("Masukkan pilihan Anda : ");
+            System.out.print("Masukkan Menu Pilihan Anda : ");
             int pilihan = scanner.nextInt();
             scanner.nextLine(); // Consume newline
 
@@ -58,10 +58,10 @@ public class MainView {
                     hapusPeserta();
                     break;
                 case 11:
-                    System.out.println("Keluar...");
+                    System.out.println("Keluar dari Program...");
                     return;
                 default:
-                    System.out.println("Pilihan tidak valid. Silakan coba lagi.");
+                    System.out.println("Pilihan Anda Tidak Valid!! Silahkan di Coba Lagi.");
             }
         }
     }
@@ -104,7 +104,7 @@ public class MainView {
     }
 
     private void editEvent() {
-        System.out.print("Masukkan ID event yang ingin diedit: ");
+        System.out.print("Masukkan nama event yang ingin diedit: ");
         String idEvent = scanner.nextLine();
         Optional<Event> event = eventService.cariEventBerdasarkanNama(idEvent);
         if (event.isPresent()) {
@@ -123,7 +123,7 @@ public class MainView {
     }
 
     private void hapusEvent() {
-        System.out.print("Masukkan ID event yang ingin dihapus: ");
+        System.out.print("Masukkan event yang ingin dihapus: ");
         String idEvent = scanner.nextLine();
         Optional<Event> event = eventService.cariEventBerdasarkanNama(idEvent);
         if (event.isPresent()) {
