@@ -41,5 +41,17 @@ public class ParticipantService {
 
     public List<Participant> lihatPesertaEvent(Event event) {
         return participantRepository.getPesertaByEvent(event);
+
+    }
+
+    // Mendapatkan total peserta dari semua event
+    public int getTotalPeserta() {
+        return participantRepository.getAllPeserta().size();
+    }
+
+    // Mendapatkan detail peserta berdasarkan NIM
+    public Optional<Participant> getDetailPesertaByNIM(String nim) {
+        return participantRepository.findPesertaByNIM(nim);
     }
 }
+

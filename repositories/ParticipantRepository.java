@@ -34,4 +34,12 @@ public class ParticipantRepository {
                 .filter(p -> p.getNama().equalsIgnoreCase(nama))
                 .findFirst();
     }
+
+    public Optional<Participant> findPesertaByNIM(String nim) {
+        return pesertaList.stream()
+                .filter(p -> p.getNim().equalsIgnoreCase(nim))
+                .findFirst();
+    }
+
 }
+

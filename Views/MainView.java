@@ -46,9 +46,15 @@ public class MainView {
                     lihatPesertaEvent();
                     break;
                 case 7:
-                    hapusPeserta();
+                    lihatTotalPeserta();
                     break;
                 case 8:
+                    lihatDetailPeserta();
+                    break;
+                case 9:
+                    hapusPeserta();
+                    break;
+                case 10:
                     System.out.println("Keluar...");
                     return;
                 default:
@@ -65,8 +71,10 @@ public class MainView {
         System.out.println("4. Hapus Event");
         System.out.println("5. Tambah Peserta");
         System.out.println("6. Lihat Peserta Event");
-        System.out.println("7. Hapus Peserta");
-        System.out.println("8. Keluar");
+        System.out.println("7. Lihat Total Peserta");
+        System.out.println("8. Lihat Detail Peserta");
+        System.out.println("9. Hapus Peserta");
+        System.out.println("10. Keluar");
     }
 
     private void tambahEvent() {
@@ -164,6 +172,25 @@ public class MainView {
             System.out.println("Peserta berhasil dihapus: " + peserta.get().getNama());
         } else {
             System.out.println("Peserta tidak ditemukan.");
+        }
+    }
+
+    private void lihatTotalPeserta() {
+        int totalPeserta = participantService.getTotalPeserta();
+        System.out.println("Total peserta di semua event: " + totalPeserta);
+    }
+
+    private void lihatDetailPeserta() {
+        System.out.print("Masukkan NIM peserta: ");
+        String nimPeserta = scanner.nextLine();
+        Optional<Participant> peserta = participantService.getDetailPesertaByNIM(nimPeserta);
+        if (peserta.isPresent()) {
+            Participant detailPeserta = peserta.get();
+            System.out.println("Nama Peserta: " + detailPeserta.getNama());
+            System.out.println("NIM Peserta: " + detailPeserta.getNim());
+            System.out.println("Event Peserta: " + detailPeserta.getEvent().getNameEvent());
+        } else {
+            System.out.println("Peserta dengan NIM tersebut tidak ditemukan.");
         }
     }
 }
