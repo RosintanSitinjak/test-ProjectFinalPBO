@@ -22,7 +22,7 @@ public class MainView {
     public void utama() {
         while (true) {
             pilihanMenu();
-            System.out.print("Masukkan Menu Pilihan Anda : ");
+            System.out.print("Masukkan Pilihan Anda : ");
             int pilihan = scanner.nextInt();
             scanner.nextLine(); // Consume newline
 
