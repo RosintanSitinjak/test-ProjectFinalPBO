@@ -139,7 +139,7 @@ public class MainView {
         String namaPeserta = scanner.nextLine();
         System.out.print("Masukkan NIM peserta: ");
         String nimPeserta = scanner.nextLine();
-        System.out.print("Masukkan ID event yang ingin diikuti: ");
+        System.out.print("Masukkan nama event yang ingin diikuti: ");
         String idEvent = scanner.nextLine();
 
         Optional<Event> event = eventService.cariEventBerdasarkanNama(idEvent);
@@ -152,7 +152,7 @@ public class MainView {
     }
 
     private void lihatPesertaEvent() {
-        System.out.print("Masukkan ID event yang ingin dilihat pesertanya: ");
+        System.out.print("Masukkan nama event yang ingin dilihat pesertanya: ");
         String idEvent = scanner.nextLine();
         Optional<Event> event = eventService.cariEventBerdasarkanNama(idEvent);
         if (event.isPresent()) {
@@ -168,7 +168,7 @@ public class MainView {
     }
 
     private void hapusPeserta() {
-        System.out.print("Masukkan ID peserta yang ingin dihapus: ");
+        System.out.print("Masukkan nama peserta yang ingin dihapus: ");
         String idPeserta = scanner.nextLine();
         Optional<Participant> peserta = participantService.cariPesertaBerdasarkanNama(idPeserta);
         if (peserta.isPresent()) {
